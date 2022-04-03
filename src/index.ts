@@ -1,4 +1,4 @@
-import express from 'express'
+import express, {Request, Response} from 'express'
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
@@ -11,7 +11,9 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded())
 app.use('/hs_01/api', router);
-
+app.get('/', (req: Request, res: Response ) => {
+  res.send('<h1>Bloggers API-01</h1>')
+})
 app.all('*', (req, res) =>{
   res.send(400)
 })
